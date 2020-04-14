@@ -1,4 +1,4 @@
-package main.java.objects;
+package objects;
 
 import org.openqa.selenium.By;
 

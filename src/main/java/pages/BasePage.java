@@ -1,9 +1,9 @@
-package main.java.pages;
+package pages;
 
-import main.java.libs.Common;
-import main.java.objects.HomeObjects;
-import main.java.objects.MyAccountObjects;
-import main.java.objects.SignInObjects;
+import libs.Common;
+import objects.HomeObjects;
+import objects.MyAccountObjects;
+import objects.SignInObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
