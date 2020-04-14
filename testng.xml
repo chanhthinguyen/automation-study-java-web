@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Automation Practices" parallel="false">
+    <test name="Sign In Successfully">
+        <classes>
+            <class name="main.java.test.signin.TC01_SignInSuccessfully"/>
+        </classes>
+    </test>
+</suite>
