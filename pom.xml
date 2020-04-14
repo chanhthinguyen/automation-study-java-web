@@ -38,6 +38,11 @@
             <artifactId>cucumber-java</artifactId>
             <version>5.6.0</version>
         </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>5.6.0</version>
+        </dependency>
 
     </dependencies>
 

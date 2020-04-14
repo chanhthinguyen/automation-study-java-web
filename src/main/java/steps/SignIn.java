@@ -10,7 +10,7 @@ import pages.MyAccountPage;
 import pages.SignInPage;
 
 
-public class SignIn extends TestBase {
+public class SignIn extends TestBase{
 
     HomePage _homePage;
     SignInPage _signInPage;
@@ -31,8 +31,6 @@ public class SignIn extends TestBase {
     public void navigateToMyAccountPage (){
         Assert.assertEquals(_myAccountPage.getPageHeading(),"MY ACCOUNT");
     }
-
-
 
 
 }

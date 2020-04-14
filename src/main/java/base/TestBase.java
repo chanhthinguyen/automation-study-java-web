@@ -4,14 +4,7 @@ import libs.Config;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 public class TestBase {
 
     protected static WebDriver driver;
@@ -27,7 +20,7 @@ public class TestBase {
 
     public WebDriver setDriver(String runMode){
 
-        if(runMode.equals("grid")){
+        /*if(runMode.equals("grid")){
             DesiredCapabilities cap = DesiredCapabilities.chrome();
             cap.setBrowserName("chrome");
             String Node = Config.getConfig("node_url");
@@ -48,6 +41,15 @@ public class TestBase {
                 TestBase.driver = new FirefoxDriver();
             }
 
+        }*/
+
+        String browser = Config.getConfig("browser");
+        if(browser.equalsIgnoreCase("CHROME")){
+            System.setProperty(Config.getConfig("chrome.key"),Config.getConfig("chrome.path"));
+            TestBase.driver = new ChromeDriver();
+        }else if(browser.equalsIgnoreCase("FIREFOX")){
+            System.setProperty(Config.getConfig("firefox.key"),Config.getConfig("firefox.path"));
+            TestBase.driver = new FirefoxDriver();
         }
 
         return driver;
@@ -55,14 +57,12 @@ public class TestBase {
     }
 
 
-    @BeforeClass
     public void beforeClass(){
         TestBase.driver.manage().window().maximize();
         TestBase.driver.navigate().to(Config.getConfig("baseUrl"));
 
     }
 
-    @AfterClass
     public void afterClass(){
         TestBase.driver.quit();
     }
