@@ -1,20 +1,23 @@
 package main.java.base;
 
+import com.applitools.eyes.selenium.Eyes;
 import main.java.libs.Config;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 public class TestBase {
 
     protected static WebDriver driver;
+
+    protected static Eyes eyes; //Eyes for Visual Testing
 
     /**
      * Constructor of TestBase to: Set Driver + Render all elements on All pages
@@ -23,6 +26,7 @@ public class TestBase {
 
         String runMode = System.getProperty("mode", "local");
         TestBase.driver = setDriver(runMode);
+        initiateEyes();
     }
 
     public WebDriver setDriver(String runMode){
@@ -68,5 +72,9 @@ public class TestBase {
     }
 
 
+    private void initiateEyes(){
+        eyes = new Eyes();
+        eyes.setApiKey(Config.getConfig("applitools.api.key"));
+    }
 
 }
