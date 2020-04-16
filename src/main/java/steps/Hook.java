@@ -1,12 +1,10 @@
-package steps;
+package main.java.steps;
 
-import base.TestBase;
-import io.cucumber.java.AfterStep;
-import io.cucumber.java.BeforeStep;
+import main.java.base.TestBase;
 
 public class Hook extends TestBase {
 
-    @BeforeStep
+   /* @BeforeStep
     public void openBrowser(){
         beforeClass();
     }
@@ -14,5 +12,5 @@ public class Hook extends TestBase {
     @AfterStep
     public void closeBrowser(){
         afterClass();
-    }
+    }*/
 }

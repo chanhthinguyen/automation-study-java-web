@@ -1,13 +1,13 @@
-package steps;
+package main.java.steps;
 
-import base.TestBase;
+import main.java.base.TestBase;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-import pages.HomePage;
-import pages.MyAccountPage;
-import pages.SignInPage;
+import main.java.pages.HomePage;
+import main.java.pages.MyAccountPage;
+import main.java.pages.SignInPage;
 
 
 public class SignIn extends TestBase{
@@ -18,6 +18,7 @@ public class SignIn extends TestBase{
 
     @Given("User navigate to Home Page")
     public void navigateToHomePage (){
+         beforeClass();
         _homePage = new HomePage(driver);
     }
 
@@ -29,7 +30,9 @@ public class SignIn extends TestBase{
 
     @Then("User in My Account page")
     public void navigateToMyAccountPage (){
+
         Assert.assertEquals(_myAccountPage.getPageHeading(),"MY ACCOUNT");
+        afterClass();
     }
 
 
