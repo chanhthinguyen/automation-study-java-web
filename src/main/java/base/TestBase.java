@@ -1,7 +1,7 @@
 package main.java.base;
 
-import com.applitools.eyes.selenium.Eyes;
 import main.java.libs.Config;
+import main.java.libs.EyesManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -17,7 +17,7 @@ public class TestBase {
 
     protected static WebDriver driver;
 
-    protected static Eyes eyes; //Eyes for Visual Testing
+    protected static EyesManager eyesManager; //Eyes for Visual Testing
 
     /**
      * Constructor of TestBase to: Set Driver + Render all elements on All pages
@@ -26,7 +26,7 @@ public class TestBase {
 
         String runMode = System.getProperty("mode", "local");
         TestBase.driver = setDriver(runMode);
-        initiateEyes();
+        eyesManager = new EyesManager(driver,Config.getConfig("appName"));
     }
 
     public WebDriver setDriver(String runMode){
@@ -68,13 +68,11 @@ public class TestBase {
 
     @AfterClass
     public void afterClass(){
+
         TestBase.driver.quit();
+        eyesManager.abort();
     }
 
 
-    private void initiateEyes(){
-        eyes = new Eyes();
-        eyes.setApiKey(Config.getConfig("applitools.api.key"));
-    }
 
 }

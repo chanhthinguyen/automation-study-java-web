@@ -15,6 +15,7 @@ public class TC01_SignInSuccessfully extends TestBase {
 
         SignInPage _signInPage = _homePage.clickSignIn();
         Assert.assertEquals(_signInPage.getPageHeading(),"AUTHENTICATION");
+        eyesManager.validateWindow();
         MyAccountPage _myAccountPage = _signInPage.login("thihuyennguyen1205@gmail.com","chanhthi1992");
         Assert.assertEquals(_myAccountPage.getPageHeading(),"MY ACCOUNT");
 
